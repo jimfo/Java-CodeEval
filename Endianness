@@ -1,0 +1,24 @@
+// Title : Endianness from CodeEval
+// Author : James Fody
+// Description : Determine the Endianness
+package endianness;
+
+import java.nio.ByteOrder;
+
+public class Endianness 
+{
+
+    public static void main(String[] args) 
+    {
+        ByteOrder b = ByteOrder.nativeOrder();
+        
+        if (b.equals(ByteOrder.BIG_ENDIAN)) 
+        {
+            System.out.println("BigEndian");
+        } 
+        else 
+        {
+            System.out.println("LittleEndian");
+        }         
+    }  
+}
