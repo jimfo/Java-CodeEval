@@ -1,0 +1,54 @@
+// Title : Swap Numbers by CodeEval
+// Author : James Fody
+// Description : You are given a list of words, each bookended by numbers
+// swap the position of the numbers for each word
+
+package swapnumbers;
+import java.io.*;
+import java.util.*;
+public class SwapNumbers 
+{
+
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            String temp[];
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(" ");
+                List<String> list = new ArrayList();
+                
+                if (line.length() > 0)
+                {
+                    for(int i = 0; i < temp.length; i++)
+                    {
+                        String mid   = "";
+                        String first = "";
+                        String last  = "";
+                        String word  = "";
+
+                        first = Character.toString(temp[i].charAt(0));
+                        last  = Character.toString(temp[i].charAt(temp[i].length()-1));
+                        mid   = temp[i].substring(1, temp[i].length()-1);
+                        word = last + mid + first;
+                        list.add(word);     
+                    }
+                    for (String s: list)
+                        System.out.print(s + " ");
+                    System.out.println();
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
