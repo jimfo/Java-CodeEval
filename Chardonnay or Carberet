@@ -1,0 +1,75 @@
+
+package chardonnayorcarberet;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ChardonnayOrCarberet 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split("\\|");
+                String wine[] = temp[0].trim().split(" ");
+                char letter[] = temp[1].trim().toCharArray();
+                String hold = "";
+                int x = 0;        
+                boolean found = true;
+                for (String w : wine)
+                {
+                    for (int i = 0; i < letter.length; i++)
+                    {
+                        found = true;
+                        String s = w.substring(x+1, w.length());
+                        
+                        if (getpos(s, letter[i]) != -1)
+                            x += getpos(s, letter[i]);
+                        else
+                        {
+                            found = false;
+                            i = letter.length;  
+                        }
+                        s = "";
+                    }
+                    if (x != -1 && found)
+                    {
+                        hold += w + " ";
+                    }
+                    x = -1;
+                }  
+                if (hold.length() > 0)
+                {
+                    System.out.println(hold.trim());
+                }
+                else
+                {
+                    System.out.println("False");
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    public static int getpos(String A, char l)
+    {      
+        int a = A.indexOf(l);
+        String B = A.substring(a, A.length());
+        System.out.println(B);
+        System.out.println(l);
+        return a;
+    }
+}
