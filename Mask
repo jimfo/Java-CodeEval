@@ -1,0 +1,48 @@
+
+package mask;
+import java.io.*;
+public class Mask 
+{
+
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            String space = " ";
+            String temp[];
+            String word, mask, lastword = "";
+            char z;
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(space);
+                word = temp[0];
+                mask = temp[1];
+ 
+                for(int i = 0; i < mask.length(); i++)
+                {
+                    z = word.charAt(i);
+
+                    if (mask.charAt(i) == '1')
+                    {
+                        lastword += Character.toUpperCase(z);
+                    }
+                    else
+                    {
+                        lastword += z;
+                    }
+                }
+                System.out.println(lastword);
+                lastword = "";
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
