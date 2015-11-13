@@ -1,0 +1,86 @@
+// Title : Longest Common Sequence by CodeEval
+// Author : James Fody
+// Description : Find the longest common subsequence of two strings
+
+package longestcommonsequence;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class LongestCommonSequence 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(";");
+                String A, B;                
+                A = temp[0].trim();
+                B = temp[1].trim();
+                               
+                System.out.println(lcs(A,B));
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+    public static String lcs(String a, String b) 
+    {
+        int[][] matrix = new int[a.length()+1][b.length()+1];
+
+        for (int i = 0; i < a.length(); i++)
+        {
+            for (int j = 0; j < b.length(); j++)
+            {
+                if (a.charAt(i) == b.charAt(j))
+                {
+                    matrix[i+1][j+1] = matrix[i][j] + 1;
+                }
+                else
+                {
+                    matrix[i+1][j+1] = Math.max(matrix[i+1][j], matrix[i][j+1]);    
+                }
+            }
+        }
+
+        StringBuffer sb = new StringBuffer();
+
+        for (int x = a.length(), y = b.length();x != 0 && y != 0; )
+        {
+            if (matrix[x][y] == matrix[x-1][y])
+            {
+                x--;
+            }
+            else 
+                if (matrix[x][y] == matrix[x][y-1])
+                {
+                    y--;
+                }
+            else 
+                {
+                    if (a.charAt(x-1) == b.charAt(y-1))
+                    {
+                        sb.append(a.charAt(x-1));
+                        x--;
+                        y--;
+                    }
+                }
+        }
+
+        return sb.reverse().toString();
+    }       
+}
