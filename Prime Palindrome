@@ -1,0 +1,43 @@
+// Title : Prime Palindrome by CodeEval
+// Author : James Fody
+// Description : Find the largest prime palindrome under 1000
+
+package prime.palindrome;
+
+public class PrimePalindrome 
+{
+    public static void main(String[] args) 
+    {
+        int num = 0;
+        int x = 2;
+        int z = 0;
+        int palin = 0;
+        
+        boolean isPrime = true;
+        
+        for(; x <= 1000; x++)
+        {
+            isPrime = true;
+            for (int y = 2; y < x; y++)
+            {
+                if (x % y == 0)
+                {
+                    isPrime = false;
+                }   
+            }
+            
+            if (isPrime)
+            {
+                String str = x + "";
+                String Rstr = new StringBuilder(str).reverse().toString();
+                
+                if (str.equals(Rstr))
+                {
+                    palin = x;
+                }  
+            }  
+        }
+        System.out.println(palin);
+    }
+    
+}
