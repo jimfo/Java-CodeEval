@@ -1,0 +1,36 @@
+// Title : Rightmost Character by CodeEval
+// Author : James Fody
+// Description : Given a String and a char, find the rightmost occurrence of the char
+
+package rightmostchar2;
+
+import java.io.*;
+
+public class RightmostChar2 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                String temp[] = line.trim().split(",");
+                
+                String word = temp[0];
+                
+                char c = temp[1].toCharArray()[0];
+                
+                System.out.println(word.lastIndexOf(c));
+            }          
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }  
+}
