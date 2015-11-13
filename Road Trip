@@ -1,0 +1,58 @@
+// TITLE : Road Trip from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Print out the distance from the starting point to the nearest city,
+// and the distances between two nearest cities separated by comma, in order they appear on the route.
+
+package roadtrip;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+public class RoadTrip 
+{
+
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            String temp[];
+            String dist[];
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(";");
+                int dist2[] = new int[temp.length+1];
+                dist2[0] = 0;
+                
+                for(int i = 0; i < temp.length; i++)
+                {
+                    dist = temp[i].split(",");
+                    int d = Integer.parseInt(dist[1]);
+                    dist2[i] = d;
+                }
+
+                Arrays.sort(dist2);
+                line = "";
+                
+                for(int i = 0; i < dist2.length-1; i++)
+                {
+                    int c = dist2[i];
+                    int d = dist2[i+1];
+                    line += d - c + ",";  
+                }
+                dist2 = null;
+                System.out.println(line.substring(0,line.length()-1));
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
