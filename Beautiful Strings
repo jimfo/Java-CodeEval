@@ -1,0 +1,82 @@
+// TITLE : Beautiful Strings from Facebook Hacker Cup 2013 Hackathon
+// AUTHOR : James Fody
+// Description : This is a FB Hackathon challenge, the solution is the sum of 
+// the frequency of a letter's occurrence multiplied by a descending number 
+// starting at 26 down to 1. Ex. aaabbc = (3*26)+(2*25)+(1*24) = 152
+package beautifulstrings;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+
+public class BeautifulStrings 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = buffer.readLine()) != null) 
+            {
+                // Remove all whitespace
+                line = line.replaceAll(" ", "");
+                
+                if(line.length() > 0)
+                {  
+                    // Set will hold all non duplicates
+                    // List will hold all letters
+                    // FreqList will hold frequency of characters
+                    // Use list to find frequncy and set to find non-dupes
+                    // Multiply non-dupe by frequncy and assigned value
+                    
+                    Set<Character> set = new HashSet();
+                    List<Character> list = new ArrayList();
+                    List<Integer> freqList = new ArrayList();
+                    int count = 0;
+                    line = line.toLowerCase();
+                    
+                    // Fill List and Set
+                    for(int i = 0; i < line.length(); i++)
+                    {
+                        char c = line.charAt(i);
+                        if((int)c > 96 && (int) c < 123)
+                        {
+                            set.add(c);
+                            list.add(c);                           
+                        }
+                    }
+                    
+                    // Determine frequncy from list and add value to freqList
+                    for(Character c: set)
+                    {
+                        int freq;
+                        freq = Collections.frequency(list, c);
+                        freqList.add(freq);  
+                    }
+                    
+                    // Sort the freqList
+                    Collections.sort(freqList);
+                    int val = 26;
+
+                    // Multiply freq by value and accumulate the result
+                    for(int i = freqList.size()-1; i >= 0; i--)
+                    {
+                        int x = freqList.get(i);
+                        count += x * val;
+                        if(val > 0)
+                            val -= 1;
+                    }
+                    System.out.println(count);
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }  
+}
