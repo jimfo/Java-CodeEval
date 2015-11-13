@@ -1,0 +1,62 @@
+// TITLE : Flavius Josephus from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Given a numbered list from 0 to n-1, return the list 
+// in the order in which they are executed
+package flaviusjosephus;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+
+public class FlaviusJosephus 
+{
+
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                
+                // Verify line is not empty
+                if(!line.isEmpty())
+                {
+                    List<Integer> list = new ArrayList();
+                    String temp[] = line.split(",");
+                    
+                    int len = Integer.parseInt(temp[0]);
+                    int skip = Integer.parseInt(temp[1]);
+                    
+                    // fill the list
+                    for(int i = 0; i < len; i++)
+                    {
+                        list.add(i);
+                    }
+                    
+                    int x = 0;
+                    
+                    while(list.size() > 0)
+                    {
+                        x += skip-1;
+                        x %= list.size();                       
+                        System.out.print(list.remove(x) + " ");
+                    }
+                }
+                System.out.println();
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
