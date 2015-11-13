@@ -1,0 +1,85 @@
+// TITLE : Mixed Content from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Separate words from numbers while maintaining their order in original
+// list and display to screen words first, comma delimited then numbers comma delimited
+// separated by |
+
+package mixedcontent;
+
+import java.io.*;
+import java.util.*;
+
+public class MixedContent 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                
+                if (line.length() > 0)
+                {
+                    temp = line.split(",");
+                    List<String> num = new ArrayList();
+                    List<String> word = new ArrayList();
+                    
+                    for(int i = 0; i < temp.length; i++)
+                    {
+                        if((int)temp[i].charAt(0) > 47 && (int)temp[i].charAt(0) < 58)
+                        {
+                            num.add(temp[i]);
+                        }
+                        else
+                        {
+                            word.add(temp[i]);
+                        }
+                    }
+                    
+                    for(int i = 0; i < word.size(); i++)
+                    {
+                        if(i < word.size() - 1)
+                        {
+                            System.out.print(word.get(i) + ",");
+                        }
+                        else
+                        {
+                            if(!num.isEmpty())
+                            {
+                                System.out.print(word.get(i) + "|");
+                            }
+                            else
+                            {
+                                System.out.print(word.get(i));
+                            }
+                        }
+                    }
+                        
+                    for(int i = 0; i < num.size(); i++)
+                    {
+                        if (i < num.size() - 1)
+                        {
+                            System.out.print(num.get(i) + ",");
+                        }
+                        else
+                        {
+                            System.out.print(num.get(i));
+                        }
+                    }
+                    System.out.println();    
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }    
+}
