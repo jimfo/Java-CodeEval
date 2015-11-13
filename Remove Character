@@ -1,0 +1,61 @@
+
+package removechar;
+import java.io.*;
+import java.util.*;
+public class RemoveChar 
+{
+
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            String temp[];
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(",");
+
+                List<Character> list = new ArrayList<>();         
+                List<Character> list2 = new ArrayList<>();
+                temp[1] = temp[1].trim();
+               // Iterator<Character> it = list.iterator();
+                
+                for (char c : temp[0].toCharArray()) 
+                {
+                    list.add(c);
+                }
+                for (char c : temp[1].toCharArray())
+                {
+                    list2.add(c);
+                }
+                
+                for(Character c: list2)
+                {
+                    if(list.contains(c))
+                    {
+                        list.removeAll(list2);
+                    }
+                }
+                line = "";
+                for(Character c : list)
+                {
+                    line += c;
+                }
+                
+                line = line.trim();
+                System.out.println(line);
+                list.clear();
+                list2.clear();
+            }
+        }
+        catch (IOException  e)
+        {
+            
+        }
+    }
+    
+}
