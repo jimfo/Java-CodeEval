@@ -1,0 +1,41 @@
+
+package oddeven;
+import java.io.*;
+// Author Jimfo
+public class Oddeven 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));            
+            String temp[];
+            String line = "";
+            String d = " ";
+            int num = 0;
+            String l = "";
+            
+            while ((line = buffer.readLine()) != null)
+            {
+                line = line.trim();
+                num = Integer.parseInt(line);
+                
+                if(num % 2 == 0)
+                {
+                    System.out.println(1);
+                }
+                else
+                {
+                    System.out.println(0);
+                }
+            }
+
+        }
+        catch (IOException e)
+        {
+            
+        }        // TODO code application logic here
+    }
+    
+}
