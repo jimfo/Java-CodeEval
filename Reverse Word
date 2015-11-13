@@ -1,0 +1,68 @@
+
+package reverseword;
+import java.io.*;
+
+public class Reverseword 
+{
+
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            int num = 0, size = 0, n = 0;
+            String line;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                String temp[];
+                line = line.trim();
+                if (line.length() > 0)
+                {
+                    temp = line.split(";");
+                    if(temp.length > 1)
+                    {
+                        num = 2 * Integer.parseInt(temp[1]);
+                        size = (temp[0].length()/num)+(temp[0].length()%num);
+                        String arr[] = new String[size];
+                        int arrI[] = new int[size];
+
+                        for(int i = 0; i < arr.length; i++)
+                        {
+                            if (num <= temp[0].length()-1)
+                            {
+                                arr[i] = temp[0].substring(n, num);
+                                arr[i] = arr[i].substring(0,arr[i].length()-1);
+                                arr[i] = new StringBuilder(arr[i]).reverse().toString();
+                                arr[i] += ",";
+                                n = num; num += num;                        
+                            }
+                            else
+                            {
+                                arr[i] = temp[0].substring(n);
+                                i = arr.length;
+                            }
+                        }
+                        n = 0; 
+
+                        for (int i = 0; i < arr.length; i++)
+                        {
+                            if ( arr[i] != null)
+                            {
+                                System.out.print(arr[i]);
+                            }
+                        }                              
+                        System.out.println();
+                    }
+                }
+            }
+        }      
+        catch (IOException e)
+        {
+            System.out.println(e);
+        } 
+    }
+    
+}
