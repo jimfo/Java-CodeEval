@@ -1,0 +1,34 @@
+// TITLE : Number of Ones
+// AUTHOR : James Fody
+// DESCRIPTION : Count the number of one bits of a binary number
+
+package bitcount;
+
+import java.io.*;
+
+public class BitCount 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            int count = 0;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                count = Integer.parseInt(line);
+                count = Integer.bitCount(count);
+                System.out.println(count);
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
