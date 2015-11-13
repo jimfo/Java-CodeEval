@@ -1,0 +1,35 @@
+// Title : Sum of Primes  by CodeEval
+// Author : James Fody
+// Description : Find the sum of the first 1000 primes
+package sumofprimes;
+
+public class SumOfPrimes 
+{
+    public static void main(String[] args) 
+    {
+        int count = 0;  // the number of primes
+        int x = 2;  // number being tested
+        int z = 0;  // the sum of primes
+
+        while (count < 1000)
+        {
+            boolean isPrime = true;
+            for (int y = 2; y < x; y++)
+            {
+                if (x % y == 0)
+                {
+                    isPrime = false;
+                }
+            }
+            
+            if(isPrime)
+            {
+                z += x;
+                count++;
+            }
+            
+            x++;
+        }
+        System.out.println(z);
+    } 
+}
