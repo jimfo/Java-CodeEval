@@ -1,0 +1,69 @@
+// TITLE : LetterCase Percentage from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Your task is to write a program which determines (calculates)
+// the percentage ratio of lowercase and uppercase letters.
+
+package upperlower;
+
+import java.io.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
+// Author Jimfo
+public class UpperLower 
+{
+
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                if(line.length() > 0)
+                {
+                    String lower =  "[a-z]+";
+                    String upper = "[A-Z]+";
+                    String uTemp = "";
+                    String lTemp = "";
+                    String both = "";
+                    double x,y,z;
+                    Pattern l = Pattern.compile(lower);
+                    Pattern u = Pattern.compile(upper);
+                    Matcher ml = l.matcher(line);
+                    Matcher mu = u.matcher(line);
+                    while(ml.find())
+                    {
+                        lTemp = ml.group();
+                    }
+                    while(mu.find())
+                    {
+                        uTemp = mu.group();
+                    }         
+                    both = lTemp + uTemp;
+
+                    x = (double)lTemp.length();
+                    y = (double)uTemp.length();
+                    z = x + y;
+
+                    System.out.print(String.format( "lowercase: %.2f", (x/z) * 100.00));
+                    System.out.print(" ");
+                    System.out.print(String.format( "uppercase: %.2f", (y/z) * 100.00));
+                    System.out.println(); 
+                }
+            }
+            
+        }
+        catch (IOException e)
+        {
+            System.out.println(e);
+        }
+    }
+    
+}
