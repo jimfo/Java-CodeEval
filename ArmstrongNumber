@@ -1,0 +1,57 @@
+// TITLE : Armstrong Numbers from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : An Armstrong number is an n-digit number 
+// that is equal to the sum of the n'th powers of its digits. 
+// Determine if the input numbers are Armstrong numbers.
+
+package armstrongnumber;
+import java.io.*;
+
+public class ArmstrongNumber 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                // Remove any trailing/leading whitespace
+                line = line.trim();
+                
+                // num is the sum of the nth powers of temp
+                // temp is the individual digits
+                // testNum is the integer to be checked
+                // len is the length of testNum
+                int num = 0, temp = 0;
+                int testNum = Integer.parseInt(line);
+                int len = line.length();
+                
+                // Get each digit and raise to the power of len
+                for(int i = 0; i < len; i++)
+                {
+                    temp = Character.getNumericValue(line.charAt(i));
+                    num += Math.pow(temp,len);
+                }
+                
+                // Check if result = original number
+                if(num == testNum)
+                {
+                    System.out.println("True");
+                }
+                else
+                {
+                    System.out.println("False");
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    } 
+}
