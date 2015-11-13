@@ -1,0 +1,128 @@
+// TITLE : Broken LCD from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : You have a 12-digit LCD, each digit consists of 8 segments:
+// 7 segments to display numbers and one segment to display a decimal mark
+// Some segments of the display are damaged and are always turned off. 
+// Your task is to determine whether a given number can be displayed on the damaged LCD.
+package brokenlcd;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.util.*;
+
+public class BrokenLCD 
+{
+
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                // Verify the line is not empty
+                if(!line.isEmpty())
+                {
+                    // Patterns numbers need to work
+                    String patterns[] = {"111111..",".11.....","11.11.1.","1111..1.",
+                                         ".11..11.","1.11.11.","1.11111.","111.....",
+                                         "1111111.","1111.11."};
+
+                    // Split line into lights and number
+                    String temp[];
+                    temp = line.split(";");
+
+                    // Initialize number string
+                    String number = temp[1];
+                    
+                    // Convert array to list
+                    List<String> lights = Arrays.asList(temp[0].split(" "));
+                    
+                    // Get rid of temp array
+                    temp = null;    
+                    
+                    // Create a flag for the light
+                    boolean works = true;
+                    int remainingLights = 0;
+                    int dotcount = 0;
+                    
+                    // If more than one dot light won't work
+                    for(int i = 0; i < number.length(); i++)
+                    {
+                        if(number.charAt(i) == '.')
+                        {
+                            dotcount++;
+                        }
+                    }
+                    
+                    if(dotcount == 1)
+                    {
+                        for(int i = 0; i < number.length(); i++)
+                        {
+                            // Get the number and find the dot position
+                            int val = Integer.parseInt(number.charAt(i) + "");
+                            int dot = number.indexOf(".");
+                            
+                            // Create a stringbuilder object to hold the light pattern
+                            // Change the digit that has the dot following it
+                            StringBuilder lightPattern;
+                            lightPattern = new StringBuilder(patterns[val]);
+
+                            if(i + 1 == dot)
+                            {  
+                                lightPattern.setCharAt(7, '1');   
+                                i += 2;
+                            }
+                            
+                            // REGEX the lightpattern and check if digit can be lit
+                            // on the remaining lights
+                            Pattern r = Pattern.compile(lightPattern.toString());
+
+                            for(int x = remainingLights; x < lights.size(); x++)
+                            {
+                                String s = lights.get(x);
+                                Matcher m = r.matcher(s);          
+
+                                if(m.find())
+                                {
+                                    x = lights.size();  
+                                    works = true;
+                                } 
+                                    remainingLights++; 
+                            }
+                          
+                            if((remainingLights-lights.size()) == 0 && (i-1) > 0)
+                            {
+                           
+                                works = false;
+                                i = number.length();
+                            }
+                        }
+                    }
+                    else
+                    {
+                        works = false;
+                    }
+                    if(works)
+                        System.out.println("1");
+                    else
+                        System.out.println("0");
+                }  
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
