@@ -1,0 +1,53 @@
+// TITLE : Multiply Lists from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : You have 2 lists of positive integers.
+// Write a program which multiplies corresponding elements in these lists.
+
+package multiplylists;
+
+import java.io.*;
+import java.util.*;
+
+public class MultiplyLists 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            String[] temp;
+            int x = 0, y = 0, z = 0, j = 0;
+
+            int result = 0;
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(" ");
+       
+                List<String> fullList = new ArrayList(Arrays.asList(temp));
+                List<String> num1 = new ArrayList();
+                List<String> num2 = new ArrayList();
+                z = num1.indexOf("|");
+                
+                num1 = fullList.subList(0, fullList.size()/2);
+                num2 = fullList.subList(fullList.size()/2+1, fullList.size());  
+                
+                for(int i = 0; i < num1.size(); i++)
+                {
+                    x = Integer.parseInt(num1.get(i));
+                    y = Integer.parseInt(num2.get(i));
+                    result = x * y;
+                    System.out.print(result + " ");
+                }
+                System.out.println();
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }   
+}
