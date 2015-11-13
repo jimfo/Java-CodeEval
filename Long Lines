@@ -1,0 +1,59 @@
+
+package longlines;
+import java.io.*;
+import java.util.*;
+public class Longlines 
+{
+    public static void main(String[] args) 
+    {
+       try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            int lines = 0, x = 0, i = 1;
+            
+            while (buffer.readLine() != null)
+            {
+                lines++;
+            }
+            
+            buffer = new BufferedReader(new FileReader(file));
+
+            List<String> arr = new ArrayList();
+            List<Integer> temp = new ArrayList();
+            
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                arr.add(line);
+                temp.add(line.length());
+            }
+            x = Integer.parseInt(arr.remove(0));
+            
+            temp.remove(0);
+            Collections.sort(temp);
+
+            for (int index = temp.size() - 1; index >= 0; index--)
+            {
+                for( String word: arr)
+                {
+                    if (word.length() == temp.get(index))
+                    {
+                        if ( i <= x)
+                        {
+                            System.out.println(word);
+                            i++;
+                        }
+                    }
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println(e);
+        }         // TODO code application logic here
+    }
+}
