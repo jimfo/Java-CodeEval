@@ -1,0 +1,52 @@
+// TITLE : Swap Case from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Change letters from upper to lower and lower to upper
+
+package swapcase;
+
+import java.io.*;
+
+public class Swapcase 
+{
+    public static void main(String[] args) 
+    {
+       try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp = "";
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+
+                for (int x = 0; x < line.length(); x++)
+                {
+                    char z = line.charAt(x);
+                    
+                    if ((int)z >= 97 && (int)z <= 122)
+                    {
+                        temp += Character.toUpperCase(z);
+                    }
+                    else if ((int)z >= 65 && (int)z <= 90)
+                    {
+                        temp += Character.toLowerCase(z);
+                    }
+                    else
+                    {
+                        temp += z;
+                    }
+                }                
+                System.out.println(temp);
+                temp = "";
+            }
+        }
+        catch (IOException e)
+        {
+            System.out.println(e);
+        }  
+    }
+    
+}
