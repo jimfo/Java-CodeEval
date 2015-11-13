@@ -1,0 +1,54 @@
+// Title : Without Repetition by CodeEval
+// Author : James Fody
+// Description : Replace character repetition with single instance
+
+package withoutrepetition2;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+public class WithoutRepetition2 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                int lineIt = 0; 
+                int arrayIt = 0; 
+                char[] outputArray = new char[line.length()]; 
+                for (char c: line.toCharArray())
+                { 
+                    if(lineIt==0)
+                    { 
+                        outputArray[arrayIt] = line.charAt(lineIt); 
+                        arrayIt++; 
+                        lineIt++; 
+                        continue; 
+                    } if (c != line.charAt(lineIt-1)) 
+                    { 
+                        outputArray[arrayIt] = line.charAt(lineIt); 
+                        arrayIt++; 
+                    } 
+                    lineIt++; 
+                } 
+                String output = new String(outputArray); 
+                System.out.println(output.trim());
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
