@@ -1,0 +1,62 @@
+// Title : Lowest Unique Number by CodeEval
+// Author : James Fody
+// Description : Find the lowest unique number from the given list and display it's
+// one based position
+
+package lowestuniguenumber;
+
+import java.io.*;
+import java.util.*;
+
+public class LowestUnigueNumber 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(" ");
+                List<String> list = Arrays.asList(temp);
+                List<Integer> unique = new ArrayList();
+
+                int k = 0;
+                
+                if(line.length() > 0)
+                {
+                    for(int x = 0; x < list.size(); x++)
+                    {
+                        String s = list.get(x);
+                        if (Collections.frequency(list,s) == 1)
+                        {
+                            unique.add(Integer.parseInt(s));
+                        }
+                    }
+                    
+                    if (unique.isEmpty())
+                    {
+                        System.out.println("0");
+                    }
+                    else
+                    {
+                        Collections.sort(unique);
+                        k = list.indexOf((unique.get(0)+""));
+                        System.out.println(k+1);                       
+                    }                 
+                } 
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
