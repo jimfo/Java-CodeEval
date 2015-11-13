@@ -1,0 +1,53 @@
+// TITLE : Bit Positions from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Given 3 numbers, convert the first number binary;
+// The other two numbers represent bit postions in the first number
+// Check to see if they are the same.
+
+package bitposition;
+
+import java.io.*;
+public class BitPosition 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+            String num;
+            int pos1 = 0, pos2 = 0, x = 0; 
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(",");
+                x = Integer.parseInt(temp[0]);
+                
+                // convert to binary
+                num = Integer.toBinaryString(x).replace(' ', '0');
+                
+                // parse the bit position numners
+                pos1 = Integer.parseInt(temp[1]) - 1;
+                pos2 = Integer.parseInt(temp[2]) - 1;
+                
+                // check if they are equal
+                if(num.charAt(num.length() - 1 - pos1) == num.charAt(num.length() - 1 - pos2))
+                {
+                    System.out.println("true");
+                }
+                else
+                {
+                    System.out.println("false");
+                }
+            }
+        }
+        catch (IOException | NumberFormatException e)
+        {
+            System.out.println(e);
+        }
+    } 
+}
