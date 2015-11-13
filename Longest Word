@@ -1,0 +1,43 @@
+// TITLE : Longest Word from CodeEval
+// AUTHOR : James Fody
+// DESCRIPTION : Print the longest word in a sentence
+
+package longestword;
+
+import java.io.*;
+
+public class Longestword 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file)); 
+            
+            String temp[];
+            String line = "";
+
+            while ((line = buffer.readLine()) != null)
+            {
+                line = line.trim();
+                temp = line.split(" ");
+                String result = "";
+                
+                for (String s : temp)
+                {
+                    if (s.length() > result.length())
+                    {
+                        result = s;
+                    }
+                } 
+                System.out.println(result);
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
