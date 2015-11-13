@@ -1,3 +1,8 @@
+// TITLE : One Zero Two Zeros from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : With the data given each line includes a test case with two numbers: 
+// the first one is the number of zeros in a binary code that we need to find and the 
+// second one is the range from 1 to this number where you have to find these zeros. 
 
 package one.zero.two.zeros;
 
