@@ -1,0 +1,60 @@
+// Title : Unique Elements by CodeEval
+// Author : James Fody
+// Description : You are given a sorted list of numbers with duplicates.
+// Print out the sorted list with duplicates removed.
+
+package uniqelements;
+
+import java.io.*;
+import java.util.List;
+import java.util.ArrayList;
+
+public class UniqElements 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            List<Integer> list = new ArrayList();
+            String strArr[];
+            int x;
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                strArr = line.split(",");
+
+                for(String z: strArr)
+                {
+                    x = Integer.parseInt(z);
+                    
+                    if(!list.contains(x))
+                    {
+                        list.add(x);
+                    }
+                }
+                
+                for (int z = 0; z < list.size(); z++)
+                {
+                    System.out.print(list.get(z));
+                    if(z != list.size() - 1)
+                    {
+                        System.out.print(",");
+                    }
+                }
+                System.out.println();
+                list.clear();
+            }
+            
+        }
+        catch (IOException e)
+        {
+            System.out.println(e);
+        }        // TODO code application logic here
+    }
+    
+}
