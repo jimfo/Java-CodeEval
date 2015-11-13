@@ -1,0 +1,61 @@
+// TITLE : Morse Code from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Decrypt a message given in morse code
+
+package morsecode;
+
+import java.io.*;
+import java.util.*;
+
+public class MorseCode 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            String temp[];
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(" ");
+                String word = "";
+                
+                List<String> alpha = Arrays.asList( "a", "b", "c", "d", "e", "f", 
+                "g", "h", "i", "j","k", "l", "m", "n", "o", "p", "q", "r", "s", 
+                "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", 
+                "7", "8", "9", "0", " " );
+                
+                List<String> morse = Arrays.asList( ".-", "-...", "-.-.", "-..", 
+                ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", 
+                "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", 
+                "-..-", "-.--", "--..", ".----", "..---", "...--", "....-", ".....",
+                "-....", "--...", "---..", "----.", "-----");     
+                
+                if (line.length() > 0)
+                {
+                    for(String s: temp)
+                    {
+                        int index = morse.indexOf(s);
+                        if (index == -1)
+                        {
+                            word += " ";
+                        }
+                        else
+                        {
+                            word += alpha.get(index);
+                        }
+                    }
+                    System.out.println(word.toUpperCase());
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
