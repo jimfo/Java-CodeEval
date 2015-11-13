@@ -1,0 +1,28 @@
+
+package filesize;
+import java.io.*;
+// Author Jimfo
+public class FileSize 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+
+            int i = 0;
+            double num = 0;
+                      
+            num = file.length(); 
+            i = (int)num;
+            System.out.println(i);
+            
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
