@@ -1,0 +1,59 @@
+// Title : Point In A Circle by CodeEval
+// Author : James Fody
+// Description : Determine if a point is lies within a circle
+
+package pointincircle;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class PointInCircle 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            String temp[];
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                if (line.length() > 0)
+                {
+                    temp = line.split(";");
+                    
+                    double x = 0, y = 0;
+                    double h = 0, k = 0;
+                    double rad = 0;
+                    
+                    String center = temp[0];
+                    String radius = temp[1].trim();
+                    String point  = temp[2];
+
+                    radius = radius.substring(radius.indexOf(" "), radius.length()).trim();
+                    center = center.substring(center.indexOf("(")+1, center.indexOf(")")).trim();
+                    point  = point.substring(point.indexOf("(")+1, point.indexOf(")")).trim();
+                    
+                    rad = Double.parseDouble(radius);
+                    h = Double.parseDouble(center.substring(0, center.indexOf(",")));
+                    k = Double.parseDouble(center.substring(center.indexOf(",")+1, center.length()));
+                    x = Double.parseDouble(point.substring(0, point.indexOf(",")));
+                    y = Double.parseDouble(point.substring(point.indexOf(",")+1, point.length()));
+                    
+                    if((Math.pow((x - h),2) + Math.pow((y - k),2)) < Math.pow(rad,2))
+                        System.out.println("true");
+                    else
+                        System.out.println("false");
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }  
+}
