@@ -1,0 +1,48 @@
+// Title : Reverse and Add by CodeEval
+// that was created by David Arthur.
+// Author : James Fody
+// Description : Add the reverse of a number to its forward version until it is a palindrome
+// Display the number of iterations it took and the palindrome
+
+package reverseandadd;
+import java.io.*;
+
+public class ReverseAndAdd 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String forward;
+            String reverse;
+            int count = 0;
+            
+            while ((forward = buffer.readLine()) != null) 
+            {
+                forward = forward.trim();
+                
+                if (forward.length() > 0)
+                {
+                    reverse = new StringBuilder(forward).reverse().toString();
+
+                    while(Long.parseLong(forward) != Long.parseLong(reverse))
+                    {
+                        count++;
+                        forward = Long.parseLong(forward) + Long.parseLong(reverse) + "";
+                        reverse = new StringBuilder(forward).reverse().toString();
+                    }
+                    System.out.println(count + " " + reverse);
+                    count = 0;
+                    reverse = "";
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }   
+}
