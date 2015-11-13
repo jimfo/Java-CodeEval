@@ -1,0 +1,45 @@
+
+package simplesort;
+import java.io.*;
+
+import java.util.Arrays;
+public class Simplesort 
+{
+
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            String strArr[];
+
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                strArr = line.split(" ");
+                double dblArr[] = new double[strArr.length];
+                
+                for (int i = 0; i < strArr.length; i++)
+                {
+                    dblArr[i] = Double.valueOf(strArr[i]); 
+                }
+                
+                Arrays.sort(dblArr);
+                
+                for(int i = 0; i< dblArr.length; i++)
+                {
+                    System.out.printf("%.3f", dblArr[i]);
+                    System.out.print(" ");
+                }
+            }
+        }      
+        catch (IOException | NumberFormatException e)
+        {
+            System.out.println(e);
+        }         
+    }
+    
+}
