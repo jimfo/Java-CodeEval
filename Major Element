@@ -1,0 +1,69 @@
+// Title : Major Element from CodeEval
+// Author : James Fody
+// Description : Find the value that has the highest repeat frequncy
+
+package test1;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class MajorElement 
+{
+
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                String temp[];
+                line = line.trim();
+                int arr[] = new int[101];
+                
+                // Verify line is not empty
+                if(line.length() > 0)
+                {
+                    // Create array of string sans comma
+                    // highNumber will be used to track value with highest frequency
+                    temp = line.split(",");
+                    int len = temp.length/2;
+                    int highNumber = 0;
+                    
+                    // Line contains strings 0 - 100, parse them and
+                    // increase count of array at that index
+                    for (int i = 0; i < temp.length; i++)
+                    {
+                        int x = Integer.parseInt(temp[i]);
+                        arr[x] = arr[x] + 1;
+                        
+                        // if count is higher than 1/2 temp array length
+                        // highest repeating string has been found
+                        if(arr[x] > len)
+                        {
+                            i = temp.length;
+                            highNumber = x;
+                        }
+                    }
+                    
+                    // Display results
+                    if(highNumber != 0)
+                        System.out.println(highNumber);
+                    else
+                        System.out.println("None");
+                }               
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
