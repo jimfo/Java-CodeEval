@@ -1,0 +1,55 @@
+// TITLE : Find a Writer from CODE EVAL
+// Author : James Fody
+// DESCRIPTION : Rearrange a scrambled line using an array of numbers
+package findawriter;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class FindAWriter 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                // Trim the line to check that it is not empty
+                line = line.trim();
+                if (line.length() > 0)
+                {
+                    int len = line.length();
+                    int index = line.indexOf('|');
+                    
+                    // Scrambeled holds the scrambeled information
+                    // Numbers holds the proper order
+                    // Writer is the sequence to be outputted
+                    String scrambeled = line.substring(0, index);
+                    String numbers[] = line.substring(index+2, len).split(" ");
+                    String writer = "";
+                    
+                    
+                    // Pull characters out of scrambeled at the
+                    // indexes found in numbers and build writer
+                    for(int i = 0; i < numbers.length; i++)
+                    {
+                        int x = Integer.parseInt(numbers[i]);
+                        writer += scrambeled.charAt(x-1);
+                    }
+                    System.out.println(writer);
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }   
+}
