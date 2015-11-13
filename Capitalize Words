@@ -1,0 +1,44 @@
+// TITLE : Capitalize Words from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Write a program which capitalizes the first letter of each word in a sentence.
+package capital;
+import java.io.*;
+public class Capital 
+{
+
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            String arr[];
+           
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                arr = line.split(" ");
+                String temp[] = new String[arr.length];
+                String cap, end;
+                
+                for(int i = 0; i < arr.length; i++)
+                {                  
+                    cap = arr[i].substring(0,1).toUpperCase();
+                    end = arr[i].substring(1);
+                    temp[i] = cap + end;
+                }
+                for(String i: temp)
+                {
+                    System.out.print(i + " ");
+                }
+                System.out.println();
+            }
+        }      
+        catch (IOException | NumberFormatException e)
+        {
+            System.out.println(e);
+        }
+    }
+    
+}
