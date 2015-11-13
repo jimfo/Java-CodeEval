@@ -1,0 +1,80 @@
+// TITLE : Guess The Number from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Guess the number using the supplied input
+package guessthenumber;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class GuessTheNumber 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                
+                // Verify line is not empty
+                if(!line.isEmpty())
+                {
+                    String temp[] = line.split(" ");
+                    double high = Double.parseDouble(temp[0]);
+                    double low = 0;
+                    double guess = (high-low)/2;
+                    double chk = 0.0;
+
+
+                    for(int i = 1; i < temp.length; i++)
+                    {
+ 
+                        if(temp[i].equals("Lower"))
+                        {
+                            high = guess;
+                            if((high-low)%2 == 0)
+                            {
+                                guess = ((low-guess)/2 + guess)+1;
+                            }
+                            else//Math.floor
+                            {
+                                guess = Math.floor((low-guess)/2 + guess);
+                            }
+                        //    System.out.println(chk);
+                        }
+                        
+                        if(temp[i].equals("Higher"))
+                        {
+                         
+                            low = guess;
+                            if((high-low)%2 == 0)
+                                guess = ((high-guess)/2 + guess)+1; //Math.ceil
+                            else
+                                guess = Math.floor((high-guess)/2 + guess);
+                        //    System.out.println(chk);
+                        }
+                        
+                        if(temp[i].equals("Yay!"))
+                        {
+                            System.out.println((int)(guess)-1);
+ 
+                            
+                        }
+                    }
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
