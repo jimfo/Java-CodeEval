@@ -1,0 +1,50 @@
+// Title : Shortest Repetition by CodeEval
+// Author : James Fody
+// Description : Find the period of the shortest repetition
+
+package shortestrepetition;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Collections;
+import java.util.ArrayList;
+
+public class ShortestRepetition
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                ArrayList<Character> list = new ArrayList();
+                
+                if(line.length() > 0)
+                {
+                    for(int i = 0; i < line.length(); i++)
+                    {
+                        char c = line.charAt(i);
+                        
+                        list.add(c);
+                    }                   
+                        char s = list.get(0);
+                        int x = Collections.frequency(list, s);
+                        int freq = list.size()/x;
+                        System.out.print(freq);                   
+                }
+                System.out.println();
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }   
+}
