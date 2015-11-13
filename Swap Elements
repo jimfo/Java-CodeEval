@@ -1,0 +1,69 @@
+// TITLE : Swap Elements from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : You are given a list of numbers which is supplemented with positions that have to be swapped. 
+
+package swapelements;
+import java.io.*;
+
+public class SwapElements 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+            String numArr[];
+            String swap[];
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+
+                if(line.length() > 0)
+                {
+                    temp = line.split(":");
+                    numArr = temp[0].split(" ");
+                    swap = temp[1].split(",");
+                    
+                    for(int i = 0; i < swap.length; i++)
+                    {
+                        String snum1;
+                        String snum2;
+                        int num1;
+                        int num2;
+                        String hold;
+                        
+                        int index = swap[i].indexOf('-');
+                            
+                        snum1 = swap[i].substring(0, index);
+                        snum2 = swap[i].substring(index+1, swap[i].length());
+                            
+                        snum1 = snum1.trim();
+                        snum2 = snum2.trim();
+                        num1 = Integer.parseInt(snum1);
+                        num2 = Integer.parseInt(snum2);
+                            
+                        hold = numArr[num1];
+                        numArr[num1] = numArr[num2];
+                        numArr[num2] = hold;
+
+                    }
+                    for(String s: numArr)
+                    {
+                        System.out.print(s + " ");
+                    }
+                    System.out.println(); 
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
