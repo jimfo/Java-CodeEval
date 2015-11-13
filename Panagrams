@@ -1,0 +1,71 @@
+// Title : Panagrams by CodeEval
+// that was created by David Arthur.
+// Author : James Fody
+// Description : Return all letters preventing a sentence from being a panagram in alpha-order
+
+package pangrams;
+import java.io.*;
+import java.util.*;
+public class Pangrams 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                Set<Character> alpha = new HashSet();
+                Set<Character> beta  = new HashSet();
+                line = line.trim();
+                
+                for(int i = 0; i < 26; i++)
+                {
+                    alpha.add((char)(i+ 97));
+                } 
+                
+                if (line.length() > 0)
+                {                  
+                    line = line.toLowerCase();
+                    for (int i = 0; i < line.length(); i++)
+                    {
+                        Character c = line.charAt(i);
+                        
+                        if(c > 96 && c < 123)
+                        {
+                            beta.add(c); 
+                        }
+                    }
+                    
+                    alpha.removeAll(beta);
+                    
+                    if(alpha.isEmpty())
+                    {
+                        System.out.print("NULL");
+                    }
+                    else
+                    {
+                        List<Character> alphaSort = new ArrayList(alpha);
+                        Collections.sort(alphaSort);
+                        for(char c: alphaSort)
+                        {
+                            System.out.print(c);
+                        }
+                    }
+                    
+                    alpha.clear();
+                    beta.clear();
+                    System.out.println();
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }   
+}
