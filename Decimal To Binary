@@ -1,7 +1,7 @@
 // TITLE : Decimal To Binary from CODE EVAL
 // AUTHOR : James Fody
 // DESCRIPTION : Convert a decimal number to binary
-// Integer.ParseBinarytoString() cost more than the hard way
+// Integer.BinarytoString() cost more than the hard way
 package binary;
 
 import java.io.*;
