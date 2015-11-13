@@ -1,0 +1,64 @@
+// Title : Counting Primes by CodeEval
+// that was created by David Arthur.
+// Author : James Fody
+// Description : Count the number of primes between two numbers
+
+package numofprimes;
+import java.io.*;
+public class NumOfPrimes 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            int start, end, count=0;
+            String line;
+            String temp[];
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                if (line.length() > 0)
+                {
+                    temp = line.split(",");
+                    start = Integer.parseInt(temp[0]);
+                    end = Integer.parseInt(temp[1]);
+                    
+                   
+                    while(start <= end)
+                    {
+                        boolean isPrime = true;
+                        for (int y = 2; y < start; y++)
+                        {
+                            if (start % y == 0)
+                            {
+                                isPrime = false;
+                            }
+                        }
+                        if(isPrime)
+                        {
+                            count++;
+                        }
+                        start++;
+                    }
+                    if(end == 0 || end == 1)
+                    {
+                        System.out.println("0");
+                    }
+                    else
+                    {
+                    System.out.println(count);
+                    }
+                    count = 0;
+                }
+            }
+        }      
+        catch (IOException e)
+        {
+            System.out.println(e);
+        }
+    }   
+}
