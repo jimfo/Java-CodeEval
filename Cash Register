@@ -1,0 +1,93 @@
+// Title : Cash Register by CodeEval
+// Author : James Fody
+// Description : List the change returned from a purchase in descending order
+
+package cashregister;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.*;
+
+public class CashRegister 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+            
+            Map<Double,String> map = new HashMap();
+                    map.put(100.00,"ONE HUNDRED");
+                    map.put(50.00,"FIFTY");
+                    map.put(20.00,"TWENTY");
+                    map.put(10.00,"TEN");
+                    map.put(5.00,"FIVE");
+                    map.put(2.00,"TWO");
+                    map.put(1.00,"ONE");
+                    map.put(.50,"HALF DOLLAR");
+                    map.put(.25,"QUARTER");
+                    map.put(.10,"DIME");
+                    map.put(.05,"NICKEL");
+                    map.put(.01,"PENNY");
+            
+            double values[] = {100.00, 50.00, 20.00, 10.00, 5.00,  
+                              2.00, 1.00, .50, .25, .10, .05, .01};
+                             
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                if (line.length() > 0)
+                {
+                    temp = line.split(";");
+                    String display = "";
+                    double PP = Double.parseDouble(temp[0]);
+                    double CH = Double.parseDouble(temp[1]);  
+                    double change = CH - PP;
+                    ArrayList<String> result = new ArrayList();
+
+                    if (change < 0)
+                    {
+                        System.out.println("ERROR");
+                    }
+                    else
+                        if (change == 0)
+                        {
+                            System.out.println("ZERO");
+                        }
+                    else
+                        {
+                            while(true)
+                            {
+                                if (change < .001)
+                                    break;
+                                for (double d : values)
+                                {
+                                    if (change + 0.01 >= d)
+                                    {
+                                        change = change - d;
+                                        result.add(map.get(d));
+                                        break;
+                                    }
+                                }
+                            }
+                            for (String s: result)
+                            {
+                                display += s + ",";
+                            }
+                                System.out.println(display.substring(0, display.length()-1));                            
+                        }
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }   
+}
