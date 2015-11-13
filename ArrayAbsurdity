@@ -1,0 +1,54 @@
+// TITLE : Array Absurdity from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Find duplicate entries in an array
+
+package arrayabsurdity;
+
+import java.io.*;
+import java.util.HashSet;
+
+public class ArrayAbsurdity 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                if (line.length() > 0)
+                {
+                    // Temp will contain line split on ';'
+                    // arr will contain temp[1] split on ','
+                    String temp[];
+                    String arr[];
+                    temp = line.split(";");
+                    arr = temp[1].split(",");
+                    
+                    // Create a set
+                    HashSet<String> set = new HashSet();
+                    
+                    // Sets don't allow duplicates
+                    // If an item can't be added it's a dupe
+                    for(String s: arr)
+                    {
+                        if(!set.add(s))
+                        {
+                            System.out.println(s);
+                        }
+                    }
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
