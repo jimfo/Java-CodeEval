@@ -1,0 +1,98 @@
+// TITLE : String Searching from CODE EVAL
+// AUTHOR: James Fody
+// DESCRIPTION : You are given two strings. 
+// Determine if the second string is a substring of the first. 
+// (Do NOT use any substr type library function). 
+// The second string may contain an asterisk(*) which should be treated 
+// as a regular expression i.e. matches zero or more characters. 
+// The asterisk can be escaped by a \ char in which case it should be 
+// interpreted as a regular '*' character. 
+// To summarize: the strings can contain alphabets, numbers, * and \ characters.
+
+package stringsearching;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class StringSearching 
+{
+
+    public static void main(String[] args) 
+    {
+         try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                if(line.length() > 0)
+                {   
+                    // Extract data
+                    temp = line.split(",");
+                    String control = temp[0];
+                    String check = temp[1];
+                    
+                    // Clean up data
+                    control = control.trim();
+                    check = check.trim();
+                    
+                    // Create a stringbuilder object
+                    StringBuilder chk = new StringBuilder(check);
+                    
+                    // Fix any /* found
+                    fixEscaped(chk);
+                    
+                    // Return to String 
+                    check = chk.toString();
+                    
+                    // REGEX
+                    Pattern r = Pattern.compile(check);
+                    Matcher m = r.matcher(control);
+                   
+                    if(m.find())
+                    {
+                        System.out.println("true");
+                    }
+                    else
+                    {
+                        System.out.println("false");
+                    }
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+    static void fixEscaped(StringBuilder chk)
+    {
+        // Roll through chk and replace all \
+        // combinations with \\ and * with {0,}
+        
+        for(int i = 0; i < chk.length(); i++)
+        {
+            if(chk.charAt(i) == '\\')
+            {
+                chk.deleteCharAt(i);
+                chk.insert(i, "\\"); 
+            }
+            if(chk.charAt(i) == '*')
+            {
+                chk.deleteCharAt(i);
+                chk.insert(i, "{0,}");  
+            }
+        }
+    }
+    
+}
