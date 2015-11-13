@@ -1,0 +1,57 @@
+// TITLE : Calculate Distance from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Find the distance between two given points
+
+package distance;
+
+import java.io.*;
+import java.util.regex.*;
+
+public class Distance 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            int temp[] = new int[4];
+            int index = 0;
+            int x1 = 0, x2 = 0;
+            int y1 = 0, y2 = 0;
+            double distance = 0;
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                if (line.length() > 0)
+                {
+                    Pattern p = Pattern.compile("-?\\d+");
+                    Matcher m = p.matcher(line);
+
+                    while (m.find()) {
+                        temp[index] = Integer.parseInt(m.group());
+                        index++;
+                    }    
+                    index = 0;
+
+                    x1 = temp[0];
+                    y1 = temp[1];
+                    x2 = temp[2];
+                    y2 = temp[3];    
+
+                    distance = Math.sqrt((Math.pow((x1-x2),2) + (Math.pow((y1-y2),2))));
+
+                    System.out.println((int)distance);
+                    System.out.println();
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }       
+    }
+}
