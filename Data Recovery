@@ -1,0 +1,68 @@
+// Title : Data Recovery by CodeEval
+// Author : James Fody
+// Description :  write a program which reconstructs each sentence out of a set of 
+// words and prints out the original sentences using a sequence of numbers to rebuild
+// the proper order of words
+
+package datarecovery;
+
+import java.io.*;
+import java.util.*;
+
+public class DataRecovery 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+            String spc = " ";
+            String wordArr[];
+            String numArr[];
+            String recovered[];
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(";");
+                wordArr = temp[0].split(spc);
+                numArr = temp[1].split(spc);
+                recovered = new String[wordArr.length+1];
+                Arrays.fill(recovered, spc);
+                int index = -1;
+                
+                for(int i = 0; i < numArr.length; i++)
+                {
+                    int num = Integer.parseInt(numArr[i]);
+                    recovered[num] = wordArr[i];
+                    wordArr[i] = spc;
+                }
+                
+                for(int i = 0; i < wordArr.length; i++)
+                {
+                    if(!wordArr[i].equals(spc))
+                    {
+                        index = i;
+                    }
+                }
+                               
+                for (int i = 1; i < recovered.length; i++)
+                {
+                    if(recovered[i].equals(spc))
+                    {
+                        recovered[i] = wordArr[index];
+                    }
+                    System.out.print(recovered[i] + " ");
+                }
+                System.out.println();               
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+}
