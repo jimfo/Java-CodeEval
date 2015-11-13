@@ -1,0 +1,78 @@
+
+package numberpairs;
+import java.io.*;
+import java.util.*;
+public class NumberPairs 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+            String num[];
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                if (line.length() > 0)
+                {
+                    temp = line.split(";");
+                    if(temp[0].length() > 0 && temp.length > 0)
+                    {
+                        List<Integer> list = new ArrayList();
+                        num = temp[0].split(",");
+                        int y = Integer.parseInt(temp[1]);
+                        Set<String> result = new HashSet();
+                        
+                        for(String s: num)
+                        {
+                            int i = Integer.parseInt(s);
+                            list.add(i);
+                        }
+                        Collections.sort(list);
+                        for(int i = 0; i < list.size(); i++)
+                        {
+                            int x = list.get(i);
+                            
+                            for(int j = i+1; j < list.size(); j++)
+                            {
+                                if (x + list.get(j) == y)
+                                {
+                                    result.add(x + "," + list.get(j));
+                                }
+                            }
+                        }
+                        list.clear();
+                        list = new ArrayList(result);
+                        Collections.sort(list);
+                        
+                        line = "";
+                        
+                        for(String s: result)
+                        {
+                            line += s + ";";
+                        }
+                        if (line.length() > 0)
+                        {
+                            System.out.print(line.substring(0, line.length()-1));
+                        }
+                        else
+                        {
+                            System.out.print("NULL");
+                        }
+                        System.out.println();
+                    }
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
