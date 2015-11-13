@@ -1,0 +1,108 @@
+// TITLE : Roman Numerals from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Convert a Cardinal number to a Roman Numeral
+
+package romannumerals;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class RomanNumerals 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                
+                if (line.length() > 0)
+                {                      
+                    int number = Integer.parseInt(line);
+                    String roman = "";
+                    
+                    // Reduce the number while building roman
+                    while(number >= 1000)
+                    {
+                        roman += "M";
+                        number -= 1000;
+                    }
+                    
+                    while(number >= 900)
+                    {
+                        roman += "CM";
+                        number -= 900;
+                    }
+                    while(number >= 500)
+                    {
+                        roman += "D";
+                        number -= 500;
+                    }
+                    while(number >= 400)
+                    {
+                        roman += "CD";
+                        number -= 400;
+                    }                    
+                    while(number >= 100)
+                    {
+                        roman += "C";
+                        number -= 100;
+                    }                    
+                    while(number >= 90)
+                    {
+                        roman += "XC";
+                        number -= 90;
+                    }   
+                    while(number >= 50)
+                    {
+                        roman += "L";
+                        number -= 50;
+                    } 
+                    while(number >= 40)
+                    {
+                        roman += "XL";
+                        number -= 40;
+                    }      
+                    while(number >= 10)
+                    {
+                        roman += "X";
+                        number -= 10;
+                    }      
+                    while(number >= 9)
+                    {
+                        roman += "IX";
+                        number -= 9;
+                    } 
+                    while(number >= 5)
+                    {
+                        roman += "V";
+                        number -= 5;
+                    } 
+                    while(number >= 4)
+                    {
+                        roman += "IV";
+                        number -= 4;
+                    } 
+                    while(number >= 1)
+                    {
+                        roman += "I";
+                        number -= 1;
+                    } 
+                    System.out.println(roman);
+                }                   
+            }            
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }   
+}
