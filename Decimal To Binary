@@ -1,0 +1,62 @@
+// TITLE : Decimal To Binary from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Convert a decimal number to binary
+// Integer.ParseBinarytoString() cost more than the hard way
+package binary;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Binary 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+          
+            String line;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                // Verify line is not empty
+                if (line.trim().length() != 0)
+                {
+                    // To find Binary divide num by 2 and put the remainder
+                    // 0 or 1 in the list and repeat the process with quotient
+                    // then read the list in reverse order to get binary
+                    int num = Integer.parseInt(line);
+                    List<Integer> arr = new ArrayList();
+                    
+                    if (num > 0)
+                    if (num == 0)
+                    {
+                        System.out.print(num);
+                    }
+                    else
+                    {
+                        while (num != 0)
+                        {
+                            arr.add(num % 2);
+                            num /= 2;
+                        }
+                
+                        for (int i = (arr.size() - 1); i >= 0; i-- )
+                        {
+                            System.out.print(arr.get(i));
+                        }
+                        arr.clear();
+                        System.out.println();
+                    }
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }        
+    }
+    
+}
