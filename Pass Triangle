@@ -1,0 +1,69 @@
+// Title : Pass Triangle from CodeEval | Sponsoring Company: Yodle
+// Author : James Fody
+// Description : By starting at the top of the triangle and moving to adjacent 
+// numbers on the row below, find the maximum total from top to bottom.
+package pass.triangle;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class PassTriangle 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+            int index1 = 0;
+            int index2 = 0;
+            int count = 0;
+            int opt1 = 0, opt2 = 0;
+           // int high = 0;
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(" ");
+                
+                if (count == 0)
+                {
+                    count = Integer.parseInt(temp[0]);
+                    
+                    index1 = 0;
+                }
+                else
+                {
+                    opt1 = Integer.parseInt(temp[index1]);
+                    opt2 = Integer.parseInt(temp[index1+1]);
+                    
+                    if(opt1 == opt2)
+                    {
+                        count += opt1;
+                        index2 = index1;
+                    }
+                    if(opt1 > opt2)
+                    {
+                        count += opt1;
+                    }
+                    else
+                    {
+                        count += opt2;
+                        index1 = index1 + 1;
+                    }
+                }
+            }
+            System.out.println(count);
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
