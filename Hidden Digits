@@ -1,0 +1,89 @@
+// TITLE : Hidden Digits from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Find all visible and hidden digits in the string and print 
+// them out in order of their appearance.
+
+package hiddendigits;
+
+import java.io.*;
+
+public class HiddenDigits 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                String hold = "";
+                if (line.length() > 0)
+                {
+                    for(int i = 0; i < line.length(); i++)
+                    {
+                        char c = line.charAt(i);
+                        int v = c;
+                        
+
+                        if ((v > 47 && v < 58) || (v > 96 && v < 107))
+                        {
+                            switch (v)
+                            {
+                                case 97:
+                                    hold += 0 + "";
+                                    break;
+                                case 98:
+                                    hold += 1 + "";
+                                    break;
+                                case 99:
+                                    hold += 2 + "";
+                                    break;
+                                case 100:
+                                    hold += 3 + "";
+                                    break;
+                                case 101:
+                                    hold += 4 + "";
+                                    break;
+                                case 102:
+                                    hold += 5 + "";
+                                    break;
+                                case 103:
+                                    hold += 6 + "";
+                                    break;
+                                case 104:
+                                    hold += 7 + "";
+                                    break;
+                                case 105:
+                                    hold += 8 + "";
+                                    break;
+                                case 106:
+                                    hold += 9 + "";
+                                    break;
+                                default:
+                                    hold += c + ""; 
+                                    
+                                    break;
+                            }
+                        }
+                    }
+                    if (hold.length() > 0)
+                    {
+                        System.out.println(hold);  
+                    }
+                    else
+                    {
+                        System.out.println("NONE");
+                    }
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
