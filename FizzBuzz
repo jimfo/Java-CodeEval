@@ -1,0 +1,69 @@
+// Title : FizzBuzz by CodeEval
+// Author : James Fody
+// Description : Write a program that prints out the final series of numbers where those divisible by X, Y
+// and both are replaced by F for fizz, B for buzz and FB for fizz buzz.
+
+package fizzbuzz;
+
+import java.io.*;
+
+public class FizzBuzz 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                
+                if ( line.length() > 0)
+                {
+                    String temp[];
+                    temp = line.split(" ");
+                    
+                    int x = Integer.parseInt(temp[0]);
+                    int y = Integer.parseInt(temp[1]);
+                    int z = Integer.parseInt(temp[2]);
+                    
+                    for(int i = 1; i <= z; i++)
+                    {
+                       if ((i % x == 0) && (i % y == 0))
+                       {
+                           System.out.print("FB ");
+                       }
+
+                       else
+                       if (i % y == 0)
+                       {
+                           System.out.print("B ");
+                       }
+
+                       else
+                       if (i % x == 0)
+                       {
+                           System.out.print("F ");
+                       }
+
+                       else
+                       if ((i % x != 0) && (i % y != 0))
+                       {
+                           System.out.print(i + " ");
+                       }                   
+                   }
+                }
+                System.out.println();
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+}
+
