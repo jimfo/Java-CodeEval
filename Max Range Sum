@@ -1,0 +1,64 @@
+// Title : Max Range Sum by CodeEval
+// Author : James Fody
+// Description : Given a range and an array find the max range sum
+
+package maxrangesum;
+
+import java.io.*;
+import java.util.*;
+
+public class MaxRangeSum 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(";");
+                String snum[];
+
+                
+                if (line.length() > 0)
+                {                
+                    snum = temp[1].split(" ");
+                    int num[] = new int[temp[1].length()];
+                    int range = Integer.parseInt(temp[0]);
+                    int checkNum = 0;
+                    int lrgNum = 0;                    
+                    
+                    for(int i = 0; i < snum.length-range+1; i++)
+                    {
+                        String checkArr[] = Arrays.copyOfRange(snum, i, range+i);
+                        
+                        for(int k = 0; k < checkArr.length; k++)
+                        {
+                            int x = Integer.parseInt(checkArr[k]);
+                            checkNum += x;
+                        }
+                        
+                        if(checkNum > lrgNum)
+                        {
+                            lrgNum = checkNum;
+                        }
+                        checkNum = 0;
+                    }
+                    System.out.println(lrgNum); 
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }
+    
+}
