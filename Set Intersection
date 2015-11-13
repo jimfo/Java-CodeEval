@@ -1,0 +1,56 @@
+
+package setintersection;
+import java.util.*;
+
+import java.io.*;
+
+public class SetIntersection 
+{
+
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String s1[];
+            String s2[];
+            
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                s1 = line.split(";");
+                TreeSet myTreeSet = new TreeSet();
+                
+                s2 = s1[0].split(",");
+                Set<Integer> set1 = new HashSet(Arrays.asList(s2));
+  
+                s2 = s1[1].split(",");
+                Set<Integer> set2 = new HashSet(Arrays.asList(s2));
+                
+                set1.retainAll(set2);
+                myTreeSet.addAll(set1);
+                
+                Iterator<Integer> it = myTreeSet.iterator();
+  
+                while(it.hasNext())
+                {
+                    System.out.print(it.next());
+                    if(it.hasNext())
+                        System.out.print(",");
+                }   
+                System.out.println();
+            }
+        }      
+        
+        catch (IOException | NumberFormatException e)
+        {
+            System.out.println(e);
+        }        // TODO code application logic here
+    }
+
+    
+}
