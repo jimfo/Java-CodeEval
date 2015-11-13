@@ -1,0 +1,45 @@
+// Title : Lost in Translation by CodeEval This is an adaptation of the original 
+// challenge that was created by David Arthur.
+// Author : James Fody
+// Description : You are given a sentence of scrambled letters, unscramble the 
+// sentence to translate
+
+package lostintranslation;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class LostInTranslation 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String alpha = "abcdefghijklmnopqrstuvwxyz ";
+            String code  = "ynficwlbkuomxsevzpdrjgthaq ";
+            
+            String line;
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                String translation = "";
+                
+                for (int x = 0; x < line.length(); x++)
+                {
+                    translation += alpha.charAt(code.indexOf(line.charAt(x)));
+                }
+                System.out.println(translation);
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }   
+}
