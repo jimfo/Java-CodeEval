@@ -1,0 +1,57 @@
+// TITLE : Compressed Sequence from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Program needs to count repetitions and compress the results by displaying
+// the frequency and number (ie 40 40 40 40 40 would be displayed as 5 40)
+
+package comseq;
+
+import java.io.*;
+public class ComSeq 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            String[] temp;
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                int count = 0;
+                line = line.trim();
+                temp = line.split(" ");
+                String seq = "";
+
+                String s = temp[0];
+                for(int i = 0; i < temp.length; i++)
+                {
+                    boolean found = false;
+                    
+                    if (s.equals(temp[i]))
+                    {
+                        count++;
+                    }
+                    else
+                    {
+                        seq += (count + " " + s + " ");
+                        s = temp[i];
+                        count = 1;
+                    }
+                    if (i == temp.length - 1)
+                    {
+                        seq += (count + " " + s + " ");
+                    }
+                }
+                seq = seq.trim();
+                
+                System.out.println(seq);
+            }
+        }      
+        catch (IOException | NumberFormatException e)
+        {
+            System.out.println(e);
+        }        
+    }  
+}
