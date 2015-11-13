@@ -1,0 +1,75 @@
+// TITLE : Time To Eat from CODE EVAL
+// AUTHOR : James Fody
+// DESCRIPTION : Given a list of timestamps int the format HH/MM/SS
+// display in descending order
+// I created two arrays, 1 with the data in original format and the other I convert the time
+// to seconds. I used a Bubble Sort to sort both arrays in parallel.
+
+package time.to.eat;
+
+import java.io.*;
+
+public class TimeToEat 
+{
+    public static void main(String[] args)
+    {
+        try
+        {
+            // create a txt file and insert name in place of my text file
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz1.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            String line;
+            
+            while ((line = buffer.readLine()) != null) 
+            {
+                String[] dates;
+                String[] hold;
+                int s;
+                
+                dates = line.split(" ");
+                int[] seconds = new int[dates.length];
+                for (int i = 0; i < dates.length; i++)
+                {
+                    hold = dates[i].split(":");
+                    
+                    s = Integer.parseInt(hold[0]) * 3600;
+                    s += Integer.parseInt(hold[1]) * 60;
+                    s += Integer.parseInt(hold[2]);
+                    
+                    seconds[i] = s;
+                }
+
+                int len = seconds.length;
+                int tempInt = 0;
+                String tempStr = "";
+                
+                for (int x = 0; x < len; x++)
+                {
+                    for (int y = 1; y < seconds.length - x; y++)
+                    {
+                        if (seconds[y-1] < seconds[y])
+                        {
+                            tempInt = seconds[y-1];
+                            seconds[y-1] = seconds[y];
+                            seconds[y] = tempInt;
+                            
+                            tempStr = dates[y-1];
+                            dates[y-1] = dates[y];
+                            dates[y] = tempStr;
+                        }
+                    }
+                }
+                
+                for (String x: dates)
+                {
+                    System.out.print(x + " ");
+                }
+            }
+            
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }  
+}
