@@ -1,0 +1,111 @@
+// Title : Query Board by CodeEval
+// Author : James Fody
+// Description : There is a board (matrix). Every cell of the board contains one integer, which is 0 initially.
+//   The next operations can be applied to the Query Board:
+//   SetRow i x: it means that all values in the cells on row "i" have been changed to value "x" after this operation.
+//   SetCol j x: it means that all values in the cells on column "j" have been changed to value "x" after this operation.
+//   QueryRow i: it means that you should output the sum of values on row "i".
+//   QueryCol j: it means that you should output the sum of values on column "j".
+//   The board's dimensions are 256x256
+//   "i" and "j" are integers from 0 to 255
+//   "x" is an integer from 0 to 31
+
+package queryboard;
+
+import java.io.*;
+
+public class Queryboard 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            int i = 256, j = 256;
+            int val = 0, rc = 0;
+            int[][] arr = new int[i][j];
+            String temp[];
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                int sum = 0;
+                line = line.trim();
+                temp = line.split(" ");
+
+                temp[1] = temp[1].trim();
+                rc = Integer.parseInt(temp[1]);
+                
+                if (temp.length > 2)
+                {
+                val = Integer.parseInt(temp[2]);
+                temp[2] = temp[2].trim();
+                }
+                
+                switch (temp[0])
+                {
+                    case "SetRow":
+                        arr = SetRow(arr, rc, val);
+                        break;
+                    case "SetCol":
+                        arr = SetCol(arr, rc, val);
+                        break;
+                    case "QueryRow":
+                        QueryRow(arr, rc);
+                        break;
+                    case "QueryCol":
+                        QueryCol(arr, rc);
+                        break;
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }       
+    }
+    
+    static int[][] SetRow(int[][]arr, int x, int v)
+    {
+        for(int i = 0; i < 256; i++)
+        {
+            arr[x][i] = v;
+        }
+        
+     return arr;   
+    }
+    
+    static int[][] SetCol(int[][]arr, int y, int v)
+    {
+        for(int i = 0; i < 256; i++)
+        {
+            arr[i][y] = v;
+        }     
+        
+     return arr;   
+    }
+    
+    static void QueryRow(int[][] arr, int x)
+    {
+        int s = 0;
+        
+        for (int i = 0; i < 256; i++)
+        {
+            s += arr[x][i];
+        }
+        System.out.println(s);  
+    }    
+    
+    static void QueryCol(int[][] arr, int y)
+    {
+        int s = 0;
+        
+        for(int i = 0; i < 256; i++)
+        {
+            s += arr[i][y];
+        }
+        System.out.println(s); 
+    }      
+}
