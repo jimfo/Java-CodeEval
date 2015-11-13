@@ -1,0 +1,76 @@
+// Title : Stepwise Word by CodeEval
+// Author : James Fody
+// Description : You are given a list of strings, find the longest one
+// and add an incrementing number of * between each letter
+
+package stepwise;
+import java.io.*;
+
+import java.util.Arrays;
+
+public class StepWise 
+{
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz2.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+            String d = " ";
+            String longword = "";
+                       
+            while ((line = buffer.readLine()) != null) 
+            {
+                String word = "";
+                line = line.trim();
+                if (line.length() > 0)
+                {
+                    temp = line.split(d); 
+                    int arr[] = new int[temp.length];
+                    
+                    for (int i = 0; i < temp.length; i++)
+                    {
+                        arr[i] = temp[i].length();
+                    }
+
+                    Arrays.sort(arr);  
+
+                    for (int i = 0; i < temp.length; i++)
+                    {
+                        if(arr[arr.length - 1] == temp[i].length())
+                        {
+                            longword = temp[i];
+                            i = temp.length;
+                        }       
+                    }
+                    char lw[] = new char[longword.length()];
+
+                    lw = longword.toCharArray();
+
+                    for (int i = 0; i < lw.length; i++)
+                    {
+                        for(int x = 0; x < i; x++)
+                        {
+                            word += "*";
+                        }
+                        word += lw[i] + " ";
+                    }
+                    word = word.trim();
+                    System.out.println(word);
+                }
+            }
+        }
+        catch (IOException e)
+        {
+                
+        }
+    }
+    
+}
