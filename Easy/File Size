@@ -1,7 +1,11 @@
+// Title : File Size from Code Eval
+// Author : James Fody
+// Description : Print the size of a file in bytes. 
 
 package filesize;
+
 import java.io.*;
-// Author Jimfo
+
 public class FileSize 
 {
     public static void main(String[] args) 
