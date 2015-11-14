@@ -1,7 +1,13 @@
+// Title : Longest Lines from Code Eval
+// Author : James Fody
+// Description : Write a program which reads a file and prints to stdout the specified number 
+// of the longest lines that are sorted based on their length in descending order. 
 
 package longlines;
+
 import java.io.*;
 import java.util.*;
+
 public class Longlines 
 {
     public static void main(String[] args) 
