@@ -7,8 +7,10 @@
 //        If there are spaces in the resulting string, trim it once again to the last space
 //        (the space should be trimmed too).
 //        Add a string ... <Read More> to the end of the resulting string and print it.
+
 package readmore;
 import java.io.*;
+
 public class ReadMore 
 {
 
