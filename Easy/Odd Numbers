@@ -1,0 +1,19 @@
+// Title : Odd Numbers from Code Eval
+// Author : James Fody
+// Description : Print the odd numbers from 1 to 99. 
+
+package oddsunder99;
+
+public class OddsUnder99 
+{
+    public static void main(String[] args) 
+    {
+        for (int x = 0; x < 100; x++)
+        {
+            if (x % 2 !=0)
+            {
+                System.out.println(x);
+            }
+        }
+    }  
+}
