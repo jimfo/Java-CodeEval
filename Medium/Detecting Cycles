@@ -3,8 +3,10 @@
 // Description : Detect a cycle within an sequence of numbers and display the cycle
 
 package detectingcycles;
+
 import java.io.*;
 import java.util.*;
+
 public class DetectingCycles 
 {
     public static void main(String[] args) 
