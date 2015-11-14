@@ -3,7 +3,9 @@
 // DESCRIPTION : Given a string representation of a set of numbers you need to print this numbers.
 
 package wordtonumber;
+
 import java.io.*;
+
 public class WordToNumber 
 {
     public static void main(String[] args) 
