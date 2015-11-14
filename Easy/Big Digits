@@ -1,6 +1,7 @@
 // TITLE : Big Digits from CODE EVAL
 // AUTHOR : James Fody
 // DESCRIPTION : Display a magnified version of given digits
+
 package bigdigits;
 
 import java.io.BufferedReader;
