@@ -1,7 +1,12 @@
+// Title : Remove Character from Code Eval
+// Author : James Fody
+// Description : Write a program which removes specific characters from a string. 
 
 package removechar;
+
 import java.io.*;
 import java.util.*;
+
 public class RemoveChar 
 {
 
