@@ -6,8 +6,11 @@
 //    a) flag "0" means that the following sequence of zeroes should be appended to a binary string.
 //    b) flag "00" means that the following sequence of zeroes should be transformed into a
 //       sequence of ones and be appended to a binary string.
+
 package jugglingzeros;
+
 import java.io.*;
+
 public class JugglingZeros 
 {
     public static void main(String[] args) 
