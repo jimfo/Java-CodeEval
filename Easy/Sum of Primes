@@ -1,6 +1,7 @@
 // Title : Sum of Primes  by CodeEval
 // Author : James Fody
 // Description : Find the sum of the first 1000 primes
+
 package sumofprimes;
 
 public class SumOfPrimes 
