@@ -1,9 +1,15 @@
+// Title : String Mask from Code Eval
+// Author : James Fody
+// Description : Create a program that would cover the word with a binary mask. 
+// If, while covering, a letter finds itself as 1, you have to change its register to the upper one, 
+// if it’s 0, leave it as it is. Words are always in lower case and in the same row with the binary mask. 
 
 package mask;
+
 import java.io.*;
+
 public class Mask 
 {
-
     public static void main(String[] args) 
     {
         try
@@ -44,5 +50,4 @@ public class Mask
             
         }
     }
-    
 }
