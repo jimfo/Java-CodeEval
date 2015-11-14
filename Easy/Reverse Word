@@ -1,10 +1,11 @@
-
+// Title : Reverse Words from Code Eval
+// Author : James Fody
+// Description : Write a program which reverses the words in an input sentence.
 package reverseword;
 import java.io.*;
 
 public class Reverseword 
 {
-
     public static void main(String[] args) 
     {
         try
