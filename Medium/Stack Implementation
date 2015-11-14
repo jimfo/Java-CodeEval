@@ -4,8 +4,10 @@
 // push the given elements onto the stack then pop evey other one off
 
 package stackface;
+
 import java.util.*;
 import java.io.*;
+
 public class Stackface 
 {
     public static void main(String[] args) 
