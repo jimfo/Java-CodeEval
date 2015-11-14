@@ -1,7 +1,11 @@
+// Title : Even Numbers from Code Eval
+// Author : James Fody
+// Description : Write a program which checks input numbers and determines whether a number is even or not. 
 
 package oddeven;
+
 import java.io.*;
-// Author Jimfo
+
 public class Oddeven 
 {
     public static void main(String[] args) 
