@@ -4,6 +4,7 @@
 // 7 segments to display numbers and one segment to display a decimal mark
 // Some segments of the display are damaged and are always turned off. 
 // Your task is to determine whether a given number can be displayed on the damaged LCD.
+
 package brokenlcd;
 
 import java.io.BufferedReader;
