@@ -2,6 +2,7 @@
 // Author : James Fody
 // Description : Given 5 numbers use three operators *, +, -
 // and determine if 42 can be reached.
+
 package number.operations;
 
 import java.io.BufferedReader;
@@ -11,7 +12,6 @@ import java.io.IOException;
 
 public class NumberOperations 
 {
-
     public static void main(String[] args) 
     {
         try
