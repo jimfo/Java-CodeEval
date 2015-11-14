@@ -1,6 +1,7 @@
 // TITLE : Guess The Number from CODE EVAL
 // AUTHOR : James Fody
 // DESCRIPTION : Guess the number using the supplied input
+
 package guessthenumber;
 
 import java.io.BufferedReader;
