@@ -4,11 +4,12 @@
 // swap the position of the numbers for each word
 
 package swapnumbers;
+
 import java.io.*;
 import java.util.*;
+
 public class SwapNumbers 
 {
-
     public static void main(String[] args) 
     {
         try
@@ -50,5 +51,4 @@ public class SwapNumbers
             
         }
     }
-    
 }
