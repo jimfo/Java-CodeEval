@@ -1,11 +1,14 @@
+// Title : Simple Sort from Code Eval
+// Author : James Fody
+// Description : Write a program which sorts numbers. 
 
 package simplesort;
-import java.io.*;
 
+import java.io.*;
 import java.util.Arrays;
+
 public class Simplesort 
 {
-
     public static void main(String[] args) 
     {
         try
