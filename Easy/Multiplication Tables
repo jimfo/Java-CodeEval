@@ -1,0 +1,20 @@
+// Title : Multiplication Table from Code Eval
+// Author : James Fody
+// Description : Print out the grade school multiplication table upto 12*12. 
+
+package multiplicationtable;
+
+public class MultiplicationTable 
+{
+    public static void main(String[] args) 
+    {
+        for (int x = 1; x < 13; x++)
+        {
+            for (int y = 1; y < 13; y++)
+            {
+                System.out.printf("%4s", x*y); 
+            }
+            System.out.println();
+        }
+    }  
+}
