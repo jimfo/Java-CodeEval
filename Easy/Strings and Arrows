@@ -1,8 +1,11 @@
 // TITLE : Strings and Arrows from CODE EVAL
 // AUTHOR : James Fody
 // DESCRIPTION : Match the character sequence in the given string
+
 package stringandarrows;
+
 import java.io.*;
+
 public class StringAndArrows 
 {
     public static void main(String[] args) 
