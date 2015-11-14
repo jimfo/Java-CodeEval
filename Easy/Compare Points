@@ -5,7 +5,9 @@
 // Determine direction one must travel to get to destination.
 
 package comparepoints;
+
 import java.io.*;
+
 public class ComparePoints 
 {
     public static void main(String[] args) 
