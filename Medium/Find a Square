@@ -3,6 +3,7 @@
 // DESCRIPTION : Given 4 points determine if it makes a square
 // Use Distance Formula with first point to other 3
 // Use Pythagorean Theorem with 2 equal sidesto see if it equals the 3rd side
+
 package findasquare;
 
 import java.io.BufferedReader;
