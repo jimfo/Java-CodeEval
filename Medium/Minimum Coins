@@ -2,6 +2,7 @@
 // Author : James Fody
 // Description : Given coins of values 5, 3, and 1, how many coins will it 
 // take to make a given value
+
 package minimumcoins;
 
 import java.io.BufferedReader;
