@@ -1,6 +1,7 @@
 // TITLE : Find a Writer from CODE EVAL
 // Author : James Fody
 // DESCRIPTION : Rearrange a scrambled line using an array of numbers
+
 package findawriter;
 
 import java.io.BufferedReader;
