@@ -1,3 +1,7 @@
+// Title : Chardonnay or Carbernet from Code Eval
+// Author : James Fody
+// Description : You should print wine names, containing all letters that Tom remembered. Letters can be anywhere in wine names. 
+// If there is no name with all letters, print False. 
 
 package chardonnayorcarberet;
 
