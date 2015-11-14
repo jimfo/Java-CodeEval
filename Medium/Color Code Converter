@@ -2,6 +2,7 @@
 // AUTHOR : James Fody
 // DESCRIPTION : Convert Hex, HSL, HSV, and CMYK values to RGB values
 // I found these formulas on RapidTable.com and Had2Know.com
+
 package colorcodeconverter;
 
 import java.io.BufferedReader;
