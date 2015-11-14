@@ -3,6 +3,7 @@
 // Description : This is a FB Hackathon challenge, the solution is the sum of 
 // the frequency of a letter's occurrence multiplied by a descending number 
 // starting at 26 down to 1. Ex. aaabbc = (3*26)+(2*25)+(1*24) = 152
+
 package beautifulstrings;
 
 import java.io.BufferedReader;
