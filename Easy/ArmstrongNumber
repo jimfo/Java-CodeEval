@@ -5,6 +5,7 @@
 // Determine if the input numbers are Armstrong numbers.
 
 package armstrongnumber;
+
 import java.io.*;
 
 public class ArmstrongNumber 
