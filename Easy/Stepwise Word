@@ -4,16 +4,12 @@
 // and add an incrementing number of * between each letter
 
 package stepwise;
-import java.io.*;
 
+import java.io.*;
 import java.util.Arrays;
 
 public class StepWise 
 {
-
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) 
     {
         try
@@ -72,5 +68,4 @@ public class StepWise
                 
         }
     }
-    
 }
