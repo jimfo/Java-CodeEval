@@ -1,0 +1,91 @@
+// Title : Details by CodeEval
+// Author : James Fody
+// Description : The detail Y starts moving left (without any turn) until it bumps into
+// the X detail at least with one cell. Determine by how many cells the detail Y will be moved.
+
+package details;
+
+import java.io.*;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+public class Details 
+{
+    public static void main(String[] args) 
+    {
+        try
+        {
+            File file = new File("/Users/jimfo1/Desktop/fizzbuzz1.txt");
+            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            
+            String line;
+            String temp[];
+
+            while ((line = buffer.readLine()) != null) 
+            {
+                line = line.trim();
+                temp = line.split(",");
+                int count = 0;
+                int sm = temp[0].length();
+                String pattern = "X(\\.*)Y";
+                
+                if(line.length() > 0)
+                {               
+                    int dis = line.length();
+                    int k = 0;
+                    Pattern r = Pattern.compile("(X\\.*Y)");                                     
+                    
+                    
+                    for (String t : temp)
+                    {
+                        Matcher m = r.matcher(t);  
+                        k += m.groupCount();
+                        if(t.contains("."))
+                        {
+                            if (m.find())
+                            { 
+                                if (dis > m.end() - m.start())
+                                    dis = (m.end() - m.start()) - 2; 
+                            }
+                            else
+                            {
+                                dis = 0;
+                            }
+                        }
+                        else
+                        {
+                            dis = 0;
+                        }      
+                    }
+                    if (k < temp.length)
+                    {
+                        dis = 0;
+                    }
+                  
+                    for(int i = 0; i < temp.length; i++)
+                    {
+                        count = 0;
+                        for(int x = 0; x < temp[i].length(); x++)
+                        {
+                            char c = temp[i].charAt(x);
+
+                            if(c == '.')
+                            {
+                                count++;
+                            }
+                        }
+                        if(count < sm )
+                        {
+                            sm = count;
+                        }    
+                    }
+                    System.out.println(sm);
+                }
+            }
+        }
+        catch (IOException e)
+        {
+            
+        }
+    }  
+}
