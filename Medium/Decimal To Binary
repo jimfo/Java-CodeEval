@@ -2,6 +2,7 @@
 // AUTHOR : James Fody
 // DESCRIPTION : Convert a decimal number to binary
 // Integer.BinarytoString() cost more than the hard way
+
 package binary;
 
 import java.io.*;
