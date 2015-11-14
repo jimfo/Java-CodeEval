@@ -3,8 +3,10 @@
 // Description :  Find the first non-repeating character
 
 package firstnonrepeatchar;
+
 import java.io.*;
 import java.util.*;
+
 public class FirstNonRepeatChar 
 {
     public static void main(String[] args) 
