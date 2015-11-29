@@ -30,7 +30,7 @@ public class BitPosition
                 // convert to binary
                 num = Integer.toBinaryString(x).replace(' ', '0');
                 
-                // parse the bit position numners
+                // parse the bit position numbers
                 pos1 = Integer.parseInt(temp[1]) - 1;
                 pos2 = Integer.parseInt(temp[2]) - 1;
                 
