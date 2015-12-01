@@ -31,7 +31,8 @@ public class Distance
                     Pattern p = Pattern.compile("-?\\d+");
                     Matcher m = p.matcher(line);
 
-                    while (m.find()) {
+                    while (m.find()) 
+                    {
                         temp[index] = Integer.parseInt(m.group());
                         index++;
                     }    
