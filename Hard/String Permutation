@@ -1,0 +1,51 @@
+// Author      : James Fody
+// Project     : String Permutations
+// Description : Program will generate all perutations of a given string
+//Github Acct  : https://github.com/jimfo
+package elements;
+
+import java.util.*;
+
+public class Elements
+{
+    public static void main(String[] args) 
+    {
+        String line = "ABCD";  
+        line = line.trim();
+        
+        if (line.length() > 0)
+        {
+            String temp[];
+            temp = line.split(",");
+            List<String> list = new ArrayList();
+            list = perm("",temp[0], list);
+
+            Collections.sort(list);
+
+            for(int i = 0; i < list.size(); i++)
+            {
+                System.out.print(list.get(i));
+                if (i < list.size()-1)
+                System.out.print(",");
+            }
+        }
+            System.out.println();
+}
+    
+    static List perm(String s, String l, List list)
+    {
+        int n = l.length();
+        if (n == 0)
+        {
+            list.add(s);
+        }
+        else 
+        {
+            for (int i = 0; i < n; i++)
+            {
+                perm(s + l.charAt(i), l.substring(0, i) + l.substring(i+1, n), list);   
+            }
+        }
+        return list;
+}
+}
