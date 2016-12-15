@@ -1,0 +1,31 @@
+//Author      : James Fody
+//Project     : Fibonacci Sequence (Recursive)
+//Description : This is your standard Fibonacci Sequence project.
+//            : The series parameter is hard coded in the main method.
+//Github Acct : https://github.com/jimfo
+package fibrecursion;
+
+
+public class FibRecursion
+{
+    public static int fibonacci(int num)
+    {
+        // Base case
+        if((num == 0) || (num == 1) )
+        {
+            return num;
+        }
+        
+        // Return the sum of the previous two
+        return fibonacci(num - 1) + fibonacci(num - 2);
+    }
+
+    public static void main(String[] args) 
+    {
+        // Sequence is hard coded in the loop, 15 is the current value
+        for(int i = 1; i <= 15; i++)
+        {
+            System.out.print(fibonacci(i) + " ");
+        }
+    }
+}
