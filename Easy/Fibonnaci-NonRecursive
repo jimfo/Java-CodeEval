@@ -1,0 +1,43 @@
+//Author      : James Fody
+//Project     : Fibonacci Sequence (Non-Recursive)
+//Description : This is your standard run of the mill Fibonacci Sequence
+//            : project. The series parameter is hard coded in the main method.
+//Github Acct : https://github.com/jimfo
+package fib;
+
+public class Fib 
+{
+    public static void main(String[] args) 
+    {
+        // Method call. Sequence is hard coded here.
+        fib(10);
+    }
+    
+    public static void fib(int num)
+    {
+        // Base case
+        if ((num == 0) || (num == 1))
+        {
+            System.out.print(num);
+        }
+        else
+        {
+            // Catch the beginning
+            System.out.print("0 1 ");
+            
+            int temp = 0;
+            int prev = 1;
+            int next = 1;
+    
+            for(int i = 2; i <= num; i++)
+            {
+                next = temp + prev;
+                temp = prev;
+                prev = next;
+                System.out.print(next + " ");
+            }
+        }
+    }
+}
+    
+
