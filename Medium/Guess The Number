@@ -13,69 +13,63 @@ public class GuessTheNumber
 {
     public static void main(String[] args) 
     {
-        try
+	public static void main(String[] args) throws IOException
+	{
+        File file = new File("/Users/jimfo/Desktop/test.txt");
+        BufferedReader in = new BufferedReader(new FileReader(file));
+        String line;
+        
+        while ((line = in.readLine()) != null) 
         {
-            File file = new File("/Users/jimfo1/Desktop/fizzbuzz3.txt");
-            BufferedReader buffer = new BufferedReader(new FileReader(file));
+            line = line.trim();
             
-            String line;
-            
-            while ((line = buffer.readLine()) != null) 
+            if(!line.isEmpty())
             {
-                line = line.trim();
-                
-                // Verify line is not empty
-                if(!line.isEmpty())
+                String temp[] = line.split(" ");
+                double high = Double.parseDouble(temp[0]);
+                double low = 0;
+                double guess = Math.ceil((high-low)/2);
+                System.out.println(guess);
+                double chk = 0.0;
+
+
+                for(int i = 1; i < temp.length; i++)
                 {
-                    String temp[] = line.split(" ");
-                    double high = Double.parseDouble(temp[0]);
-                    double low = 0;
-                    double guess = (high-low)/2;
-                    double chk = 0.0;
 
-
-                    for(int i = 1; i < temp.length; i++)
+                    if(temp[i].equals("Lower"))
                     {
- 
-                        if(temp[i].equals("Lower"))
+                        high = guess-1;
+                        if((high-low) % 2 == 0)
                         {
-                            high = guess;
-                            if((high-low)%2 == 0)
-                            {
-                                guess = ((low-guess)/2 + guess)+1;
-                            }
-                            else//Math.floor
-                            {
-                                guess = Math.floor((low-guess)/2 + guess);
-                            }
-                        //    System.out.println(chk);
+                            guess = ((high - low)/2) + low;
                         }
-                        
-                        if(temp[i].equals("Higher"))
+                        else
                         {
-                         
-                            low = guess;
-                            if((high-low)%2 == 0)
-                                guess = ((high-guess)/2 + guess)+1; //Math.ceil
-                            else
-                                guess = Math.floor((high-guess)/2 + guess);
-                        //    System.out.println(chk);
+                            guess = Math.ceil((high - low)/2) + low;
                         }
-                        
-                        if(temp[i].equals("Yay!"))
+                    }
+                    
+                    if(temp[i].equals("Higher"))
+                    {
+                     
+                        low = guess+1;
+                        if((high-low) % 2 == 0)
                         {
-                            System.out.println((int)(guess)-1);
- 
-                            
+                            guess = (((high-low)/2) + low); 
                         }
+                        else
+                        {
+                            guess = Math.ceil((high-low)/2) + low;
+                        }
+                    }
+                    
+                    if(temp[i].equals("Yay!"))
+                    {
+                        System.out.println((int)(guess));
                     }
                 }
             }
         }
-        catch (IOException e)
-        {
-            
-        }
-    }
-    
+        in.close();
+	}
 }
